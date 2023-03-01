@@ -1,38 +1,6 @@
-// index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import asabenehImage from './images/asabeneh.jpg'
-
-const hexaColor = () => {
-  let str = '0123456789abcdef'
-  let color = ''
-  for (let i = 0; i < 6; i++) {
-    let index = Math.floor(Math.random() * str.length)
-    color += str[index]
-  }
-  return '#' + color
-}
-
-const HexaColor = () => {
-  const bgColor = hexaColor()
-  const styles = {
-    height: '100px',
-    display: 'flex',
-    'justify-content': 'center',
-    'align-items': 'center',
-    fontFamily: 'Montserrat',
-    margin: '2px auto',
-    borderRadius: '5px',
-    width: '75%',
-    border: '2px solid black',
-  }
-  return (
-    <div style={styles}>
-      <h2>{bgColor}</h2>
-    </div>
-  )
-}
-
+import React from "react";
+import ReactDOM from "react-dom";
+import asabenehImage from "./images/asabeneh.jpg";
 // Header Component
 const Header = () => (
   <header>
@@ -60,14 +28,6 @@ const TechList = () => {
   const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
   return techsFormatted
 }
-const buttonStyles = {
-  padding: '10px 20px',
-  background: 'rgb(0, 255, 0)',
-  border: 'none',
-  borderRadius: 5,
-}
-
-const Button = () => <button style={buttonStyles}> action </button>
 
 // Main Component
 const Main = () => (
@@ -78,11 +38,6 @@ const Main = () => (
         <TechList />
       </ul>
       <UserCard />
-      <div>
-        {/* Generate two different hexa colors every time */}
-        <HexaColor />
-        <HexaColor />
-      </div>
     </div>
   </main>
 )
@@ -96,7 +51,7 @@ const Footer = () => (
   </footer>
 )
 
-// The App, or the parent or the container component
+// App Component
 const App = () => (
   <div className='app'>
     <Header />
@@ -105,6 +60,4 @@ const App = () => (
   </div>
 )
 
-const rootElement = document.getElementById('root')
-// we render the App component using the ReactDOM package
-ReactDOM.render(<App />, rootElement)
+ReactDOM.render(<App />, document.getElementById("root"));
