@@ -48,7 +48,7 @@ const personAge = (
 // User Card Component
 const UserCard = () => (
   <div className='user-card'>
-    <img src={asabenehImage} alt='asabeneh image' />
+    <img src={asabenehImage} alt='asabeneh' />
     <h2>
       {author.firstName} {author.lastName}
     </h2>
