@@ -13,7 +13,7 @@ const Images = (props) => {
   const htmlImages = props.technologies.map((tech) => {
     const alt = tech+' logo';
     return <img src={tech} alt={alt}/>});
-  return (<div>
+  return (<div className='imgWrapper'>
     {htmlImages}
   </div>)
 }
@@ -21,7 +21,7 @@ const Images = (props) => {
 const App = () => {
   const title = 'Frontend technologies';
   const technologies = [html_logo, css_logo , js_logo, react_logo];
-  return <div className='wrapper'>
+  return <div className='app'>
     <Title title={title}/>
     <Images technologies={technologies}/>
   </div>;
