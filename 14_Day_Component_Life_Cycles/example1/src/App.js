@@ -3,30 +3,53 @@
 import React, {Component} from 'react'
 
 class App extends Component {
-    state = {
-        pos : {
-            x : 0,
-            y : 0
-        }
+    constructor(props) {
+      super(props)
+      console.log('I am  the constructor and  I will be the first to run.')
+      this.state = {
+        firstName: 'John',
+        data: [],
+      }
     }
   
-    move = (e) => {
-        this.setState({
-            pos : {
-                x : Math.floor(Math.random()*window.innerWidth),
-                y : Math.floor(Math.random()*window.innerHeight)
-            }
+    componentDidMount() {
+      console.log('I am componentDidMount and I will be last to run.')
+      const API_URL = 'https://anatole-sot.xyz/projets/gibli/api/'
+      fetch(API_URL)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          this.setState({
+            data,
+          })
+        })
+        .catch((error) => {
+          console.log(error)
         })
     }
-
+  
     render() {
-        return (
-            <div>
-                <h1 style= {{"top" : this.state.pos.y+"px","left" : this.state.pos.x+"px","position":'absolute'}} onMouseEnter={this.move}>App Component</h1>
+      return (
+        <div className='App'>
+          <h1>React Component Life Cycle</h1>
+          <h1>Calling API</h1>
+          <div>
+            <p>There are {this.state.data.length} recipes in the api</p>
+            <div className='countries-wrapper'>
+              {this.state.data.map((recipe) => (
+                <div>
+                    <h1>{recipe.Title}</h1>
+                    <p>Temps: {recipe.Temps}</p>
+                    <p>Nb de personnes: {recipe.personnes}</p>
+                </div>
+              ))}
             </div>
-        )
+          </div>
+        </div>
+      )
     }
-}
+  }
 
 
 export default App
